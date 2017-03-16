@@ -1,0 +1,20 @@
+apply plugin: 'idea'
+apply plugin: 'java'
+
+
+repositories {
+    jcenter()
+}
+
+configurations {
+    apt
+}
+
+tasks.withType(JavaCompile) {
+    options.annotationProcessorPath = configurations.apt
+    options.incremental = true
+}
+
+dependencies {
+    apt 'org.immutables:value:2.4.4'
+}
